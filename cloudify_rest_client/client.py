@@ -162,13 +162,13 @@ class HTTPClient(object):
                                    timeout=timeout or self.default_timeout_sec,
                                    auth=auth)
         if self.logger.isEnabledFor(logging.DEBUG):
-            for hdr, hdr_content in response.request.headers.iteritems():
+            for hdr, hdr_content in list(response.request.headers.items()):
                 self.logger.debug('request header:  %s: %s'
                                   % (hdr, hdr_content))
             self.logger.debug('reply:  "%s %s" %s'
                               % (response.status_code,
                                  response.reason, response.content))
-            for hdr, hdr_content in response.headers.iteritems():
+            for hdr, hdr_content in list(response.headers.items()):
                 self.logger.debug('response header:  %s: %s'
                                   % (hdr, hdr_content))
 
@@ -227,7 +227,7 @@ class HTTPClient(object):
         body = json.dumps(data) if is_dict_data else data
         if self.logger.isEnabledFor(logging.DEBUG):
             log_message = 'Sending request: {0} {1}'.format(
-                requests_method.func_name.upper(),
+                requests_method.__name__.upper(),
                 request_url)
             if is_dict_data:
                 log_message += '; body: {0}'.format(body)
