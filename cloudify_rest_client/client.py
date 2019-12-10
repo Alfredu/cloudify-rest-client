@@ -317,7 +317,7 @@ class HTTPClient(object):
         if not username or not password:
             return None
         credentials = '{0}:{1}'.format(username, password)
-        encoded_credentials = urlsafe_b64encode(credentials)
+        encoded_credentials = urlsafe_b64encode(credentials.encode('utf-8')).decode('utf-8')
         return BASIC_AUTH_PREFIX + ' ' + encoded_credentials
 
     def _set_header(self, key, value, log_value=True):
