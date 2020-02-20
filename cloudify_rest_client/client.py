@@ -77,7 +77,6 @@ class HTTPClient(object):
         self.host = host
         self.protocol = protocol
         self.api_version = api_version
-
         self.headers = headers.copy() if headers else {}
         if not self.headers.get('Content-type'):
             self.headers['Content-type'] = 'application/json'
