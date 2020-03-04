@@ -8,4 +8,6 @@ Cloudify REST Client
 
 Client for interacting with Cloudify manager REST API.
 
+Forked to add python3 support and some other fixes
+
 See [http://cloudify-rest-client.readthedocs.org/en/latest/](http://cloudify-rest-client.readthedocs.org/en/latest/)
